@@ -85,7 +85,7 @@ hxkt-cloud
 - 自定义鉴权 SDK 供各微服务接入
 - JWT Token 解析 + 权限校验
 
-## 快速开始
+
 
 ### 环境要求
 - JDK 11+
@@ -96,36 +96,4 @@ hxkt-cloud
 - Elasticsearch 7.12+
 - XXL-Job 2.3+
 
-### 配置说明
-敏感配置已使用环境变量占位，启动前需配置以下环境变量：
 
-| 环境变量 | 说明 |
-|---|---|
-| `ENCRYPT_KEYSTORE_PASSWORD` | 证书库密码 |
-| `ENCRYPT_KEYSTORE_SECRET` | 证书库秘钥 |
-| `TENCENT_SECRET_ID` | 腾讯云 SecretId |
-| `TENCENT_SECRET_KEY` | 腾讯云 SecretKey |
-| `TENCENT_VOD_URL_KEY` | 腾讯云 VOD URL Key |
-| `ALI_SMS_ACCESS_ID` | 阿里云短信 AccessId |
-| `ALI_SMS_ACCESS_SECRET` | 阿里云短信 AccessSecret |
-| `ALI_PAY_APP_ID` | 支付宝 AppId |
-| `ALI_PAY_MERCHANT_PRIVATE_KEY` | 支付宝商户私钥 |
-| `ALI_PAY_PUBLIC_KEY` | 支付宝公钥 |
-| `WX_PAY_APP_ID` | 微信支付 AppId |
-| `WX_PAY_MCH_ID` | 微信支付商户号 |
-| `WX_PAY_MCH_SERIAL_NO` | 微信支付证书序列号 |
-| `WX_PAY_PRIVATE_KEY` | 微信支付私钥 |
-| `WX_PAY_API_V3_KEY` | 微信支付 V3 密钥 |
-
-### 启动步骤
-1. 启动 Nacos、MySQL、Redis、RabbitMQ、Elasticsearch 等基础服务
-2. 在 Nacos 中配置各共享配置文件（shared-spring.yaml、shared-redis.yaml 等）
-3. 按以下顺序启动微服务：
-   - `hxkt-gateway`（网关）
-   - `hxkt-auth`（认证服务）
-   - `hxkt-user`（用户服务）
-   - 其他业务服务
-
-## 许可证
-
-本项目仅供学习交流使用。
