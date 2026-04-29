@@ -1,0 +1,47 @@
+﻿server:
+  port: 8081  #端口
+  tomcat:
+    uri-encoding: UTF-8   #服务编码
+spring:
+  profiles:
+    active: dev
+  application:
+    name: auth-service
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        shared-configs: # 共享配置
+          - data-id: shared-spring.yaml # 共享spring配置
+            refresh: false
+          - data-id: shared-redis.yaml # 共享redis配置
+            refresh: false
+          - data-id: shared-mybatis.yaml # 共享mybatis配置
+            refresh: false
+          - data-id: shared-logs.yaml # 共享日志配置
+            refresh: false
+encrypt:
+  key-store:
+    alias: hxkt-cloud  #别名
+    location: classpath:hxkt-cloud.jks  #KeyStore 证书库名称
+    password: ${ENCRYPT_KEYSTORE_PASSWORD}   #证书库密码
+    secret: ${ENCRYPT_KEYSTORE_SECRET}   #秘钥
+tj:
+  swagger:
+    enable: true
+    enableResponseWrap: true
+    package-path: com.hxkt.auth.controller
+    title: 好学云课堂 - 权限微服务接口文档
+    description: 该服务用于管理权限相关信息
+    contact-name: 好学云课堂项目组
+    contact-url: https://haoxue.example.com/
+    contact-email: dev@haoxue.example.com
+    version: v1.0
+  auth:
+    resource:
+      enable: true
+      includeLoginPaths:
+        - /menus/me
+        - /accounts/logout
+  jdbc:
+    database: tj_auth
